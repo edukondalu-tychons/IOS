@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, SafeAreaView, Dimensions } from "react-native";
 import MapView, { LatLng, Marker, Polyline } from "react-native-maps";
 import polyline from '@mapbox/polyline';
+
+const { width, height } = Dimensions.get('window');
 
 const App: React.FC = () => {
   const mapRef = useRef<MapView>(null); // Correctly type the ref
@@ -20,17 +22,28 @@ const App: React.FC = () => {
   };
 
   return (
+    <SafeAreaView style={{ flex:1}}>
     <View style={styles.container}>
       <MapView
-        mapType="standard"
+      style={StyleSheet.absoluteFillObject}
+        // mapType="standard"
+        //mapType="satellite" // or "hybrid" or "satellite"
+
         ref={mapRef} // Assign the ref
         provider="google"
         showsCompass
         showsIndoors
         showsTraffic
-        //showsMyLocationButton
+        showsMyLocationButton
+        zoomControlEnabled
+        zoomEnabled
+        zoomTapEnabled
+        showsBuildings
+        showsIndoorLevelPicker
+        showsPointsOfInterest
+        showsScale
         showsUserLocation
-        style={styles.map}
+        //style={styles.map}
         initialRegion={{
           latitude: 16.54689409018138,
           longitude: 81.4832554757595,
@@ -53,15 +66,19 @@ const App: React.FC = () => {
         { markersList.map((location:LatLng) => <Marker key={location.latitude} coordinate={location} />) }
       </MapView>
     </View>
+    </SafeAreaView> 
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
+    margin: 0,     // Ensure no margin
+    padding: 0,    // Ensure no padding
+  },  
   map: {
     ...StyleSheet.absoluteFillObject,
+    flex: 1, // Ensure the MapView takes the full screen within the SafeAreaView
   },
 });
 

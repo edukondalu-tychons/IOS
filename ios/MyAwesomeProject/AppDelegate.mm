@@ -51,8 +51,11 @@
   self.window = window;
 
   // Replace this with a secure method to retrieve your API key
-  NSString *apiKey = @"AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"; // Consider loading this from a secure source
+  NSString *apiKey = @"AIzaSyBy23QPq57ncj9Us2UbtieLIzxzk0mjAKo"; // Consider loading this from a secure source
   [GMSServices provideAPIKey:apiKey];
+
+/*  [GMSServices provideAPIKey:@"AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"];*/
+
   
   self.moduleName = @"MyAwesomeProject";
   
