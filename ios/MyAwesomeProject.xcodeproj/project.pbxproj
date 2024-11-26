@@ -15,6 +15,8 @@
 		7131FCAA7664EC5F08C4B110 /* libPods-MyAwesomeProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7E3D28D70C11FD48BA626C /* libPods-MyAwesomeProject.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8645B8A59E00C8A8A6A7168B /* libPods-MyAwesomeProject-MyAwesomeProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F799E7C989FF1E4D5CDCDA1B /* libPods-MyAwesomeProject-MyAwesomeProjectTests.a */; };
+		E5E333182CE7424A00AE73C4 /* HelloWorldModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E333172CE7424A00AE73C4 /* HelloWorldModule.m */; };
+		E5E3331C2CE7564400AE73C4 /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E3331B2CE7563E00AE73C4 /* LocationModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,10 @@
 		9F6C0A3DBF2B29A3B52071AA /* Pods-MyAwesomeProject-MyAwesomeProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyAwesomeProject-MyAwesomeProjectTests.release.xcconfig"; path = "Target Support Files/Pods-MyAwesomeProject-MyAwesomeProjectTests/Pods-MyAwesomeProject-MyAwesomeProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		BFCB1FCD57A4550EE494F2C9 /* Pods-MyAwesomeProject-MyAwesomeProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyAwesomeProject-MyAwesomeProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-MyAwesomeProject-MyAwesomeProjectTests/Pods-MyAwesomeProject-MyAwesomeProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6B230F7EE47FE3EE2BB233F /* Pods-MyAwesomeProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyAwesomeProject.release.xcconfig"; path = "Target Support Files/Pods-MyAwesomeProject/Pods-MyAwesomeProject.release.xcconfig"; sourceTree = "<group>"; };
+		E5E333172CE7424A00AE73C4 /* HelloWorldModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldModule.m; sourceTree = "<group>"; };
+		E5E333192CE7427000AE73C4 /* HelloWorldModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldModule.h; sourceTree = "<group>"; };
+		E5E3331A2CE7559300AE73C4 /* LocationModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationModule.h; sourceTree = "<group>"; };
+		E5E3331B2CE7563E00AE73C4 /* LocationModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationModule.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F799E7C989FF1E4D5CDCDA1B /* libPods-MyAwesomeProject-MyAwesomeProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyAwesomeProject-MyAwesomeProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -89,6 +95,10 @@
 		13B07FAE1A68108700A75B9A /* MyAwesomeProject */ = {
 			isa = PBXGroup;
 			children = (
+				E5E3331B2CE7563E00AE73C4 /* LocationModule.m */,
+				E5E3331A2CE7559300AE73C4 /* LocationModule.h */,
+				E5E333192CE7427000AE73C4 /* HelloWorldModule.h */,
+				E5E333172CE7424A00AE73C4 /* HelloWorldModule.m */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -399,6 +409,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				E5E333182CE7424A00AE73C4 /* HelloWorldModule.m in Sources */,
+				E5E3331C2CE7564400AE73C4 /* LocationModule.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

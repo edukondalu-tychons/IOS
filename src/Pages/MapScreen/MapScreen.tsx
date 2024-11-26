@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Dimensions, Text } from 'react-native';
+import { View, StyleSheet, Dimensions, Text, Alert, NativeModules } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-// import Geolocation from '@react-native-community/geolocation';
+const { HelloWorldModule } = NativeModules;
 
 const { width, height } = Dimensions.get('window');
 
@@ -13,21 +13,10 @@ const MapScreen = () => {
     longitudeDelta: 0.0421,
   });
 
-//   useEffect(() => {
-//     // Request the user's current location
-//     Geolocation.getCurrentPosition(
-//       (position) => {
-//         const { latitude, longitude } = position.coords;
-//         setRegion({
-//           ...region,
-//           latitude,
-//           longitude,
-//         });
-//       },
-//       (error) => console.log(error),
-//       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-//     );
-//   }, []);
+  useEffect(() => {
+    console.log(HelloWorldModule.getConstants());
+  }, []);
+
 
   return (
     <View style={styles.container}>
@@ -41,6 +30,8 @@ const MapScreen = () => {
         showsScale
         showsTraffic
         showsUserLocation
+        loadingEnabled
+        userLocationCalloutEnabled={false}
         provider='google'
         mapType='standard'
         style={StyleSheet.absoluteFill}

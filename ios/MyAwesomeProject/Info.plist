@@ -3,20 +3,28 @@
 <plist version="1.0">
 <dict>
 
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-	<string>msal</string>
-	<string>msauth</string>
-	</array>
+    <!-- <key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app requires access to your location to show nearby places.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app needs access to your location in the background to track your activity.</string> -->
 
 	<key>CFBundleURLTypes</key>
 	<array>
 	<dict>
 		<key>CFBundleURLSchemes</key>
 		<array>
-		<string>assaabloy</string> <!-- Replace with your client ID assaabloy-->
+		<string>assaabloy</string>
 		</array>
 	</dict>
+	</array>
+
+	<key>UIAppFonts</key>
+	<array>
+		<string>./node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf</string>
+		<string>./node_modules/react-native-vector-icons/Fonts/Ionicons.ttf</string>
+		<string>./node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf</string>
+		<string>./node_modules/react-native-vector-icons/Fonts/Entypo.ttf</string>
+		<string>./node_modules/react-native-vector-icons/Fonts/Feather.ttf</string>
 	</array>
 
 	<key>CFBundleDevelopmentRegion</key>

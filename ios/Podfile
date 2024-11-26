@@ -1,22 +1,37 @@
-# Resolve react_native_pods.rb with node to allow for hoisting
+# Resolve the path to react_native_pods.rb dynamically via Node.js
 require Pod::Executable.execute_command('node', ['-p',
   'require.resolve(
     "react-native/scripts/react_native_pods.rb",
     {paths: [process.argv[1]]},
   )', __dir__]).strip
 
+# Specify the iOS platform version
 platform :ios, '14'
+
+# Prepare React Native project
 prepare_react_native_project!
 
+# # Setup permissions, add any other permissions as needed
+# setup_permissions([
+#   'LocationAccuracy',
+#   'LocationAlways',
+#   'LocationWhenInUse',
+#   # Add more permissions as required
+# ])
+
+# Check if the 'USE_FRAMEWORKS' environment variable is set
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
   use_frameworks! :linkage => linkage.to_sym
 end
 
+# Define the target for your iOS project
 target 'MyAwesomeProject' do
+  # Use native modules in the project
   config = use_native_modules!
 
+  # Specify the path to React Native
   use_react_native!(
     :path => config[:reactNativePath],
     :app_path => "#{Pod::Config.instance.installation_root}/.."
@@ -26,15 +41,24 @@ target 'MyAwesomeProject' do
   rn_maps_path = '../node_modules/react-native-maps'
   pod 'react-native-google-maps', :path => rn_maps_path
 
-  # Specify GoogleMaps version
-  pod 'GoogleMaps', '~> 8.4.0' # Specify the version you want
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  # Specify version of Google Maps
+  pod 'GoogleMaps', '~> 8.4.0' # Use your desired version
   pod 'Google-Maps-iOS-Utils'
 
+  # use_frameworks!
+  # pod 'Permission-LocationAlways'
+  # pod 'Permission-LocationWhenInUse'
+  # pod 'react-native-permissions', :path => '../node_modules/react-native-permissions'
+
+  # Test target for your project
   target 'MyAwesomeProjectTests' do
     inherit! :complete
-    # Pods for testing
+    # Pods for testing, add as necessary
   end
 
+  # Post install hook to configure React Native post installation
   post_install do |installer|
     react_native_post_install(
       installer,

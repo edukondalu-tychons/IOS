@@ -1,39 +1,44 @@
 import React, { useCallback } from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { format } from 'date-fns';
 
-const { width } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 interface EventCardProps {
-  title: string;
-  date: string;
-  location: string;
-  //description: string;
- // imageUrl: string;
-//   onRSVP: () => void;
-//   onDetails: () => void;
+  event: {
+    subject: string;
+    start: { dateTime: string };
+    end: { dateTime: string };
+    location: string;
+    organizer: { emailAddress: { name: string } };
+  };
 }
 
-const EventCard: React.FC<any> = ({event}) => {
-    const formatDateTime = useCallback((dateTime: string) => {
-        return format(new Date(dateTime), 'MM/dd/yyyy h:mm a');
-      },[]);
+const EventCard: React.FC<EventCardProps> = ({ event }) => {
+  const formatDateTime = useCallback((dateTime: string) => {
+    return format(new Date(dateTime), 'MM/dd/yyyy h:mm a');
+  }, []);
 
-      const formatDateEndTime = useCallback((dateTime: string) => {
-        return format(new Date(dateTime), 'h:mm a');
-      },[]);
-    
+  const formatDateEndTime = useCallback((dateTime: string) => {
+    return format(new Date(dateTime), 'h:mm a');
+  }, []);
+
   return (
     <View style={styles.card}>
       {/* <Image source={{ uri: imageUrl }} style={styles.cardImage} /> */}
 
       <View style={styles.cardContent}>
         <Text style={styles.cardTitle}>{event.subject || ''}</Text>
-        <View style={{flexDirection:'row'}}>
-           <Text style={styles.cardDate}>{formatDateTime(event.start.dateTime) || ''} - </Text>
-           <Text style={styles.cardLocation}>{formatDateEndTime(event.end.dateTime) || ''}</Text>
+        <View style={styles.dateContainer}>
+          <Text style={styles.cardDate}>{formatDateTime(event.start.dateTime) || ''} - </Text>
+          <Text style={styles.cardDate}>{formatDateEndTime(event.end.dateTime) || ''}</Text>
         </View>
-        <Text style={styles.cardTitle}>organizer : { event.organizer.emailAddress.name || ''}</Text>
+        <View style={styles.organizerContainer}>
+          <Text style={styles.cardDescription}>Organizer: {event.organizer.emailAddress.name || ''}</Text>
+          <TouchableOpacity>
+            <Text style={[styles.cardDescription, styles.linkText]}>See More</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -42,7 +47,7 @@ const EventCard: React.FC<any> = ({event}) => {
 const styles = StyleSheet.create({
   card: {
     width: '90%',
-    marginHorizontal:20,
+    marginHorizontal: 20,
     backgroundColor: '#ffffff',
     borderRadius: 10,
     elevation: 5,
@@ -62,49 +67,30 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   cardTitle: {
-    fontSize: 20,
+    fontSize: height * 0.02,
     fontWeight: 'bold',
     color: '#333',
-    marginVertical: 10,
+  },
+  dateContainer: {
+    flexDirection: 'row',
+    marginVertical: 5,
   },
   cardDate: {
-    fontSize: 16,
-    color: '#000000',
+    fontSize: height * 0.015,
+    color: '#000',
   },
-  cardLocation: {
-    fontSize: 16,
-    color: '#000000',
-    //marginLeft:10,
-  },
-  cardDescription: {
-    fontSize: 14,
-    color: '#333',
-    marginBottom: 15,
-  },
-  buttonsContainer: {
+  organizerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  button: {
-    flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#0078D4', // Microsoft Blue
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 5,
-    justifyContent: 'center',
-    width: '48%',
   },
-  detailsButton: {
-    backgroundColor: '#F3F2F1', // Light grey for details button
-    borderWidth: 1,
-    borderColor: '#0078D4',
+  cardDescription: {
+    fontSize: height * 0.018,
+    color: '#333',
   },
-  buttonText: {
-    color: '#fff',
-    marginLeft: 5,
-    fontSize: 14,
-    fontWeight: 'bold',
+  linkText: {
+    textDecorationLine: 'underline',
+    color: '#0078D4',
   },
 });
 

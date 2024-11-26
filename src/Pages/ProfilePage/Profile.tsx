@@ -8,6 +8,7 @@ import {
   ScrollView,
   SafeAreaView,
   Alert,
+  Dimensions,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -21,6 +22,8 @@ interface User {
   mail: string;
   id: string;
 }
+
+const { height } = Dimensions.get('window');
 
 const ProfilePage = () => {
   const [user, setUser] = useState<any>();
@@ -145,12 +148,17 @@ const styles = StyleSheet.create({
   // New style for logout button at the top-right
   logoutButton: {
     position: 'absolute',
-    top: 30,
-    right: 30,
+    top: '2%',
+    right: 20,
     backgroundColor: '#0078D4',
     padding: 10,
     borderRadius: 50,
     zIndex: 1,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
 });
 
